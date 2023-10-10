@@ -1,0 +1,62 @@
+From 1eba204ecd6e8c16469817e2184fb0fcc7d17a04 Mon Sep 17 00:00:00 2001
+From: Erwan SZYMANSKI <erwan.szymanski@st.com>
+Date: Thu, 5 Oct 2023 14:10:49 +0200
+Subject: [PATCH] ARM: dts: stm32: Adding STPM4RasPI on spi5 nodes
+
+Change-Id: I09b4a16f7c50ec7ecf201c1705cd58d03bdf723c
+---
+ arch/arm/boot/dts/stm32mp135f-dk.dts   | 13 ++++++++++++-
+ arch/arm/boot/dts/stm32mp15xx-dkx.dtsi | 13 ++++++++++++-
+ 2 files changed, 24 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/stm32mp135f-dk.dts b/arch/arm/boot/dts/stm32mp135f-dk.dts
+index bee689f2ee8e..0f23d6dcacef 100644
+--- a/arch/arm/boot/dts/stm32mp135f-dk.dts
++++ b/arch/arm/boot/dts/stm32mp135f-dk.dts
+@@ -515,7 +515,18 @@ &spi5 {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&spi5_pins_a>;
+ 	pinctrl-1 = <&spi5_sleep_pins_a>;
+-	status = "disabled";
++	status = "okay";
++
++	cs-gpios = <&gpioh 11 0>;
++	
++	st33htpm0: st33htpm@0{
++		status="okay";
++		compatible = "st,st33htpm-spi";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		reg = <0>; /* CS #0 */
++		spi-max-frequency = <10000000>;
++		};
+ };
+ 
+ &timers3 {
+diff --git a/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi b/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi
+index b1f02b092272..7368b7519e06 100644
+--- a/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi
++++ b/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi
+@@ -601,7 +601,18 @@ &spi5 {
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&spi5_pins_a>;
+ 	pinctrl-1 = <&spi5_sleep_pins_a>;
+-	status = "disabled";
++	status = "okay";
++
++	cs-gpios = <&gpiof 6 0>;
++
++	st33htpm0: st33htpm@0{
++		status="okay";
++		compatible = "st,st33htpm-spi";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		reg = <0>; /* CS #0 */
++		spi-max-frequency = <10000000>;
++		};
+ };
+ 
+ &timers1 {
+-- 
+2.34.1
+
