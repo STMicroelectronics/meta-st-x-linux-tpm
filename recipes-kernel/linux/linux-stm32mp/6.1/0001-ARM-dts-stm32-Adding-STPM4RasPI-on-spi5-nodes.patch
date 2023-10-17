@@ -1,7 +1,7 @@
 From 1eba204ecd6e8c16469817e2184fb0fcc7d17a04 Mon Sep 17 00:00:00 2001
 From: Erwan SZYMANSKI <erwan.szymanski@st.com>
 Date: Thu, 5 Oct 2023 14:10:49 +0200
-Subject: [PATCH] ARM: dts: stm32: Adding STPM4RasPI on spi5 nodes
+Subject: [PATCH 1/2] ARM: dts: stm32: Adding STPM4RasPI on spi5 nodes
 
 Change-Id: I09b4a16f7c50ec7ecf201c1705cd58d03bdf723c
 ---

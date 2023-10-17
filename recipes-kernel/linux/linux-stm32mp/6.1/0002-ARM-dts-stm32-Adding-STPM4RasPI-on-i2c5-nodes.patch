@@ -1,0 +1,50 @@
+From 06bffa8a9b65bc870f5c95f3759b1a68d2ad9356 Mon Sep 17 00:00:00 2001
+From: Erwan SZYMANSKI <erwan.szymanski@st.com>
+Date: Mon, 16 Oct 2023 11:45:54 +0200
+Subject: [PATCH 2/2] ARM: dts: stm32: Adding STPM4RasPI on i2c5 nodes
+
+Change-Id: I13a941dc8db341a42ba7bff9de41174c8f7db055
+---
+ arch/arm/boot/dts/stm32mp135f-dk.dts   | 6 ++++++
+ arch/arm/boot/dts/stm32mp15xx-dkx.dtsi | 8 +++++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/stm32mp135f-dk.dts b/arch/arm/boot/dts/stm32mp135f-dk.dts
+index 0f23d6dcacef..5b7ec753075b 100644
+--- a/arch/arm/boot/dts/stm32mp135f-dk.dts
++++ b/arch/arm/boot/dts/stm32mp135f-dk.dts
+@@ -417,6 +417,12 @@ goodix: goodix-ts@5d {
+ 		touchscreen-size-y = <272>;
+ 		status = "okay" ;
+ 	};
++
++	st33htpi: st33htpi@0{
++		compatible = "infineon,slb9673", "tcg,tpm-tis-i2c";
++		reg = <0x2e>;
++		status="okay";
++	};
+ };
+ 
+ &ltdc {
+diff --git a/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi b/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi
+index 7368b7519e06..70a8025aa991 100644
+--- a/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi
++++ b/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi
+@@ -465,7 +465,13 @@ &i2c5 {
+ 	/* spare dmas for other usage */
+ 	/delete-property/dmas;
+ 	/delete-property/dma-names;
+-	status = "disabled";
++	status = "okay";
++
++	st33htpi: st33htpi@0{
++		compatible = "infineon,slb9673", "tcg,tpm-tis-i2c";
++		reg = <0x2e>;
++		status="okay";
++	};
+ };
+ 
+ &i2s2 {
+-- 
+2.34.1
+
