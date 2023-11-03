@@ -14,7 +14,7 @@ The software stack associated with this package is ***TPM 2.0*** and brings libr
 
 ## Documentation
 
-**The main documentation linked with this X-LINUX package is available on [X-LINUX-TPM wiki article](https://wiki.st.com/stm32mpu/wiki/X-LINUX-TPM_OpenSTLinux_Expansion_Package).**
+**The main documentation linked with this X-LINUX package is available on [X-LINUX-TPM wiki article](https://wiki.st.com/stm32mpu/wiki/X-LINUX-TPM_expansion_package).**
 
 In this article, you will find useful information concerning how to add the layer to your Yocto build process, as well as other technical details.
 
