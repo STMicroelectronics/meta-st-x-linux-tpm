@@ -1,0 +1,35 @@
+From 3cfe0713d6a4043487f5a14b4b2b88a027b184e1 Mon Sep 17 00:00:00 2001
+From: Erwan SZYMANSKI <erwan.szymanski@st.com>
+Date: Mon, 7 Oct 2024 08:35:17 +0200
+Subject: [PATCH 1/2] ARM64:dts:stm32:Adding I2C8 support of TPM on
+ STM32MP257F-DK
+
+Change-Id: I4499c1edfbaf025da22424013e4f787a400d93e4
+---
+ arch/arm64/boot/dts/st/stm32mp257f-dk.dts | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/st/stm32mp257f-dk.dts b/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
+index 0345d346eff8..55517c5e5713 100644
+--- a/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
++++ b/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
+@@ -397,10 +397,15 @@ &i2c8 {
+ 	i2c-scl-rising-time-ns = <185>;
+ 	i2c-scl-falling-time-ns = <20>;
+ 	clock-frequency = <100000>;
+-	status = "disabled";
++	status = "okay";
+ 	/* spare dmas for other usage */
+ 	/delete-property/dmas;
+ 	/delete-property/dma-names;
++	st33htpi: st33htpi@0{
++		compatible = "infineon,slb9673", "tcg,tpm-tis-i2c";
++		reg = <0x2e>;
++		status="okay";
++	};
+ };
+ 
+ &i2s2 {
+-- 
+2.34.1
+
