@@ -8,6 +8,8 @@ This layer is given as example, but can be applied directly on following product
 - [STM32MP157F-DK2](https://www.st.com/en/evaluation-tools/stm32mp157f-dk2.html) board.
 - [STM32MP135F-DK](https://www.st.com/en/evaluation-tools/stm32mp135f-dk.html) board.
 - [STM32MP257F-EV1](https://www.st.com/en/evaluation-tools/stm32mp257f-ev1.html) board.
+- [STM32MP257F-DK](https://www.st.com/en/evaluation-tools/stm32mp257f-dk.html) board.
+
 
 The previous boards provide a Raspberry PI connector, that can be used to plug directly the STPM4RasPI expansion board.
 
