@@ -1,0 +1,35 @@
+From 5e3487196b2c418abf828ecc6c594c0585d15f3f Mon Sep 17 00:00:00 2001
+From: Alexandre Marechal <alexandre.marechal@st.com>
+Date: Mon, 10 Feb 2025 17:21:26 +0100
+Subject: [PATCH] ARM64:dts:stm32:Adding SPI6 support of TPM on STM32MP257F-DK
+
+Upstream-Status: Inappropriate [TPM expansion board specific configuration]
+---
+ arch/arm64/boot/dts/st/stm32mp257f-dk.dts | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/st/stm32mp257f-dk.dts b/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
+index d06071f2d78f..8efad3c45de9 100644
+--- a/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
++++ b/arch/arm64/boot/dts/st/stm32mp257f-dk.dts
+@@ -946,7 +946,16 @@
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&spi6_pins_a>;
+ 	pinctrl-1 = <&spi6_sleep_pins_a>;
+-	status = "disabled";
++	status = "okay";
++	cs-gpios = <&gpiof 4 0>;
++	st33htpm0: st33htpm@0{
++		status="okay";
++		compatible = "st,st33htpm-spi";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		reg = <0>; /* CS #0 */
++		spi-max-frequency = <10000000>;
++	};
+ };
+ 
+ &syscfg {
+-- 
+2.34.1
+

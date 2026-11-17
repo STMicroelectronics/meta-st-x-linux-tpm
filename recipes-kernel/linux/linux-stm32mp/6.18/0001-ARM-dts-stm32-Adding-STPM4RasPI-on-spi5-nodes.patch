@@ -1,0 +1,62 @@
+From f9d8f71314daac8c71bed62f4599e1429bd6d1c1 Mon Sep 17 00:00:00 2001
+From: Alexandre Marechal <alexandre.marechal@st.com>
+Date: Wed, 2 Jul 2025 14:24:29 +0200
+Subject: [PATCH] ARM: dts: stm32: Adding STPM4RasPI on spi5 nodes
+
+Upstream-Status: Inappropriate [TPM expansion board specific configuration]
+---
+ arch/arm/boot/dts/st/stm32mp135f-dk.dts   | 13 ++++++++++++-
+ arch/arm/boot/dts/st/stm32mp15xx-dkx.dtsi | 13 ++++++++++++-
+ 2 files changed, 24 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/st/stm32mp135f-dk.dts b/arch/arm/boot/dts/st/stm32mp135f-dk.dts
+index 6caf77605db6..b105f5d4ef17 100644
+--- a/arch/arm/boot/dts/st/stm32mp135f-dk.dts
++++ b/arch/arm/boot/dts/st/stm32mp135f-dk.dts
+@@ -637,7 +637,18 @@
+ 	       <&mdma 0 0x3 0x1200000a 0 0>;
+ 	dma-names = "rx", "tx", "rxm2m";
+ 	sram = <&spi5_dma_pool>;
+-	status = "disabled";
++	status = "okay";
++
++	cs-gpios = <&gpioh 11 0>;
++
++	st33htpm0: st33htpm@0{
++		status="okay";
++		compatible = "st,st33htpm-spi";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		reg = <0>; /* CS #0 */
++		spi-max-frequency = <10000000>;
++	};
+ };
+ 
+ &sram2 {
+diff --git a/arch/arm/boot/dts/st/stm32mp15xx-dkx.dtsi b/arch/arm/boot/dts/st/stm32mp15xx-dkx.dtsi
+index b89962f74b55..979afc5f1c09 100644
+--- a/arch/arm/boot/dts/st/stm32mp15xx-dkx.dtsi
++++ b/arch/arm/boot/dts/st/stm32mp15xx-dkx.dtsi
+@@ -788,7 +788,18 @@
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&spi5_pins_a>;
+ 	pinctrl-1 = <&spi5_sleep_pins_a>;
+-	status = "disabled";
++	status = "okay";
++
++	cs-gpios = <&gpiof 6 0>;
++
++	st33htpm0: st33htpm@0{
++		status="okay";
++		compatible = "st,st33htpm-spi";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		reg = <0>; /* CS #0 */
++		spi-max-frequency = <10000000>;
++       };
+ };
+ 
+ &sram4 {
+-- 
+2.34.1
+
